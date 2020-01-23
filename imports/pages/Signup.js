@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import {Form , Button , Container} from 'semantic-ui-react'
 import { Accounts } from 'meteor/accounts-base'
+import { Link } from 'react-router-dom'
 
 function Signup(props) {
     const [email , setEmail]        = useState()
@@ -26,6 +27,9 @@ function Signup(props) {
                 <Form.Input onChange={(e, {value}) => setEmail(value)} label="Email"required type ="email" placeholder="ex : toto@yopmail.com" />
                 <Form.Input onChange={(e, {value}) => setPassword(value)} label="Mot de passe"required type="password" placeholder="Entrez votre mot de passe" />
                 <Button disabled={!email || !password} color="blue">M'inscrire</Button>
+                <Link to="/signin"> 
+                <Button size="mini">J'ai déjà un compte</Button>
+                </Link>
             </Form>
         </Container>
     )
