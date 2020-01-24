@@ -25,7 +25,7 @@ const ProductSchema = new SimpleSchema({
         defaultValue : "https://static.thenounproject.com/png/28189-200.png"
     },
     category : {
-        type : String,
+        type : String, 
         optional : true
     },
     created_at : {
