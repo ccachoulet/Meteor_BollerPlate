@@ -30,9 +30,10 @@ const ProductSchema = new SimpleSchema({
     },
     created_at : {
         type : Date,
-        defaultValue : NewDate()
+        defaultValue : new Date()
     }
 })
 
 Products.attachSchema(ProductSchema)
+export default Products
 

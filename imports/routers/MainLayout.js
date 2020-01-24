@@ -8,6 +8,7 @@ import Signup from '/imports/pages/Signup'
 import Signin from '/imports/pages/Signin'
 import MyProducts from '/imports/pages/MyProducts'
 import NewProduct from '/imports/pages/NewProduct'
+import Catalog from '/imports/pages/Catalog'
 import NotFound from '/imports/pages/NotFound'
 
 // Admin Route
@@ -21,6 +22,7 @@ function MainLayout(props) {
             <Route path="/signin" component={Signin} />
             <Route path="/my_products" component={MyProducts} />
             <Route path="/new_product" component={NewProduct} />
+            <Route path="/catalog/:user_id" component={Catalog} />
             <Route path="/admin/users" component={AdminUsers} />
             <Route path="*" component={NotFound} />
             <Route path="/" exact component={Landing} />

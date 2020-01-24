@@ -6,13 +6,10 @@ import Products from '/imports/api/products/products'
 import Product from '/imports/components/Product'
 
 
-function MyProducts(props){
+function Catalog(props){
     return(
         <Container>
-            <h1>Mes Produits</h1>
-            <Link to="/new_product">
-                <Button color="green" icon="plus" content="Ajouter produit" />
-            </Link>
+            <h1>Catalogue de {props.username}</h1>
             {!props.loading && props.products.map(product => {
                 return <Product product={product} />
             })}
@@ -20,13 +17,14 @@ function MyProducts(props){
     )
 }
 
-export default withTracker(() => {
-    const products_pub = Meteor.subscribe('products.me')
+export default withTracker(({match}) => {
+    const {user_id} = match.params
+    const products_pub = Meteor.subscribe('products.by_user' , user_id)
     const loading = !products_pub.ready()
-    const products = Products.find({seller: Meteor.userId()}).fetch()
+    const products = Products.find({seller: user_id}).fetch()
 
     return{
         loading,
         products
     }
-})(MyProducts)
+})(Catalog)
